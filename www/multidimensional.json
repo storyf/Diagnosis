@@ -1,0 +1,21 @@
+{"questionList":[
+    {"number":"0","questionid":"A","title":"インドアよりもアウトドアの遊びの方が好きだ。","yes":1,"no":3},
+    {"number":"1","questionid":"B","title":"好きな食べ物でも2日連続だと飽きてしまう。","yes":2,"no":4},
+    {"number":"2","questionid":"C","title":"約束当日にドタキャンしたことが何回かある。","yes":100000,"no":5},
+    {"number":"3","questionid":"D","title":"青や水色などの爽やかな色が好きだ。","yes":4,"no":6},
+    {"number":"4","questionid":"E","title":"一人より大勢でいるほうが好きだ。","yes":5,"no":7},
+    {"number":"5","questionid":"F","title":"人見知りはしないほうだ。","yes":100001,"no":8},
+    {"number":"6","questionid":"G","title":"アクション映画が好きだ。","yes":7,"no":100003},
+    {"number":"7","questionid":"H","title":"夏休みの宿題はギリギリまで手をつけないタイプだ。","yes":8,"no":100004},
+    {"number":"8","questionid":"I","title":"サプライズをされると嬉しい。","yes":100002,"no":100005}
+],
+"decisionList":[
+    {"number":"100000","title":"猫","decision":"あなたは猫","logo":"cat"},
+    {"number":"100001","title":"犬","decision":"あなたは犬"},
+    {"number":"100002","title":"兎","decision":"あなたは兎"},
+    {"number":"100003","title":"蛇","decision":"あなたは蛇"},
+    {"number":"100004","title":"猪","decision":"あなたは猪"},
+    {"number":"100005","title":"羊","decision":"あなたは羊"}
+]
+}
+

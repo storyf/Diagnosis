@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    var question;   //質問データを入れる
+    var log = [];   //ページを戻せる
+    
+    $.getJSON("multidimensional.json",function(result){
+        question = result
+        })
+    
+    var current;   //現在の質問番号
+    function start(){
+        current = 0;
+        log = [];
+        
+        //問題ページ(question.html)に遷移する
+        document.getElementById("navi").pushPage("question.html");
+    }
+    
+    //問題ページに問題を表示する処理
+    //init:そのページを開いたとき
+    document.addEventListener("init",function(event){
+        var page = event.target;
+        
+        if(page.id == "question-page"){//questionページの時
+            //jsonのデータをページにセットする
+            var questionID = "設問"+question.questionList[current].questionid;
+            var title = question.questionList[current].title;
+            
+            page.querySelector("#questionId").innerHTML = questionID;
+            page.querySelector("#title").innerHTML = title;
+            
+            page.querySelector("#btn1").innerHTML = "Yes";
+            page.querySelector("#btn2").innerHTML = "No";
+        }
+        else if(page.id == "result-page"){
+            
+            var logo = question.decisionList[current].logo;
+            var decision = question.decisionList[current].decision;
+            
+            page.querySelector("#logo").innerHTML = "<img src='../../res/animals/" + logo + ".jpg'>";
+            page.querySelector("#decision").innerHTML = decision;
+            
+            $("#btn_return").on("click",function(){
+                document.getElementById("navi").resetToPage("top.html",{animation:"lift"});
+            })
+        }
+        
+    })
+    
+     //回答を選択した時
+    function select(choiceNo){
+        //戻る時用にcurrentをlog[]に入れる
+        log.push(current);
+        
+        if(choiceNo == 1){
+            current = question.questionList[current].yes;
+        }else{
+            current = question.questionList[current].no;
+        }
+        //currentが100000未満の時はquestionListを使う質問表示ページ 100000以上の時はdecisionListを使う結果表示ページ
+        if(current < 100000){
+            //次のページに遷移後に処理を行う
+            document.getElementById("navi").pushPage("question.html");
+        }else{
+            document.getElementById("navi").pushPage("result.html");
+            //currentを100000引いてdecisionListの添字番号にする
+            current =　current - 100000;
+        }
+    }
+    
+    //一つ前の画面に戻るボタンが押されたら動く
+    function back(){
+        //log[]に最後の数字をcurrentに入れる
+        current = log.pop();
+        document.getElementById("navi").popPage();
+    }
+    
+  </script>
+</head>
+<body>
+    <ons-navigator id="navi" page="top.html"></ons-navigator>
+</body>
+</html>
+
+
