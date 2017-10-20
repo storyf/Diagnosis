@@ -10,12 +10,12 @@
     {"number":"8","questionid":"I","title":"サプライズをされると嬉しい。","yes":100002,"no":100005}
 ],
 "decisionList":[
-    {"number":"100000","title":"猫","decision":"あなたは猫","logo":"cat"},
-    {"number":"100001","title":"犬","decision":"あなたは犬"},
-    {"number":"100002","title":"兎","decision":"あなたは兎"},
-    {"number":"100003","title":"蛇","decision":"あなたは蛇"},
-    {"number":"100004","title":"猪","decision":"あなたは猪"},
-    {"number":"100005","title":"羊","decision":"あなたは羊"}
+    {"number":"100000","title":"猫","decision":"あなたは猫のような性格です","logo":"cat.jpg"},
+    {"number":"100001","title":"犬","decision":"あなたは犬のような性格です","logo":"dog.jpg"},
+    {"number":"100002","title":"兎","decision":"あなたは兎のような性格です","logo":"rabbit.jpg"},
+    {"number":"100003","title":"蛇","decision":"あなたは蛇のような性格です","logo":"snake.jpg"},
+    {"number":"100004","title":"猪","decision":"あなたは猪のような性格です","logo":"boar.jpg"},
+    {"number":"100005","title":"羊","decision":"あなたは羊のような性格です","logo":"sheep.jpg"}
 ]
 }
 

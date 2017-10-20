@@ -14,7 +14,7 @@
 
   <script>
     var question;   //質問データを入れる
-    var log = [];   //ページを戻せる
+    var log = [];   //ページを戻すときに使うログ
     
     $.getJSON("multidimensional.json",function(result){
         question = result
@@ -36,8 +36,8 @@
         
         if(page.id == "question-page"){//questionページの時
             //jsonのデータをページにセットする
-            var questionID = "設問"+question.questionList[current].questionid;
-            var title = question.questionList[current].title;
+            var questionID = "設問"+question.questionList[current].questionid;  //jsonデータの中のquestionListのcurrent番目のquestionid
+            var title = question.questionList[current].title;                   //jsonデータの中のquestionListのcurrent番目のtitle
             
             page.querySelector("#questionId").innerHTML = questionID;
             page.querySelector("#title").innerHTML = title;
@@ -50,7 +50,9 @@
             var logo = question.decisionList[current].logo;
             var decision = question.decisionList[current].decision;
             
-            page.querySelector("#logo").innerHTML = "<img src='../../res/animals/" + logo + ".jpg'>";
+            //診断結果に合った動物のロゴ表示
+            page.querySelector("#logo").setAttribute("src","animals/"+question.decisionList[current].logo);
+            //その動物の説明
             page.querySelector("#decision").innerHTML = decision;
             
             $("#btn_return").on("click",function(){
@@ -70,7 +72,7 @@
         }else{
             current = question.questionList[current].no;
         }
-        //currentが100000未満の時はquestionListを使う質問表示ページ 100000以上の時はdecisionListを使う結果表示ページ
+        //currentが100000未満の時はquestionListを使う質問表示ページ 100000以上の時はdecisionListを使う結果表示ページに遷移する
         if(current < 100000){
             //次のページに遷移後に処理を行う
             document.getElementById("navi").pushPage("question.html");
